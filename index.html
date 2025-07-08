@@ -435,6 +435,13 @@
                         <option value="">All</option>
                     </select>
                 </div>
+
+                <div class="filter-group">
+                    <label for="labelFilter">Labels Available</label>
+                    <select id="labelFilter">
+                        <option value="">All Labels</option>
+                    </select>
+                </div>
             </div>
         </div>
 
@@ -669,26 +676,30 @@
         function populateFilterOptions() {
             const modalities = [...new Set(datasets.map(d => d.modality))];
             
-            // Handle comma-separated values for organs, diseases, and contrast status
+            // Handle comma-separated values for organs, diseases, contrast status, and labels
             const organSet = new Set();
             const diseaseSet = new Set();
             const contrastSet = new Set();
+            const labelSet = new Set();
             
             datasets.forEach(dataset => {
                 // Split comma-separated values and trim whitespace
                 dataset.organ.split(',').forEach(organ => organSet.add(organ.trim()));
                 dataset.disease.split(',').forEach(disease => diseaseSet.add(disease.trim()));
                 dataset.contrastStatus.split(',').forEach(contrast => contrastSet.add(contrast.trim()));
+                dataset.labels.split(',').forEach(label => labelSet.add(label.trim()));
             });
 
             const organs = [...organSet].sort();
             const diseases = [...diseaseSet].sort();
             const contrastStatuses = [...contrastSet].sort();
+            const labels = [...labelSet].sort();
 
             populateSelect('modalityFilter', modalities);
             populateSelect('organFilter', organs);
             populateSelect('diseaseFilter', diseases);
             populateSelect('contrastFilter', contrastStatuses);
+            populateSelect('labelFilter', labels);
         }
 
         function populateSelect(selectId, options) {
@@ -709,6 +720,7 @@
             document.getElementById('diseaseFilter').addEventListener('change', filterDatasets);
             document.getElementById('healthyFilter').addEventListener('change', filterDatasets);
             document.getElementById('contrastFilter').addEventListener('change', filterDatasets);
+            document.getElementById('labelFilter').addEventListener('change', filterDatasets);
             
             // View toggle buttons
             document.getElementById('cardViewBtn').addEventListener('click', () => toggleView('card'));
@@ -746,6 +758,7 @@
             const diseaseFilter = document.getElementById('diseaseFilter').value;
             const healthyFilter = document.getElementById('healthyFilter').value;
             const contrastFilter = document.getElementById('contrastFilter').value;
+            const labelFilter = document.getElementById('labelFilter').value;
 
             filteredDatasets = datasets.filter(dataset => {
                 const matchesSearch = !searchTerm || 
@@ -765,9 +778,12 @@
                 const matchesContrast = !contrastFilter || 
                     dataset.contrastStatus.split(',').some(contrast => contrast.trim() === contrastFilter);
                 
+                const matchesLabel = !labelFilter || 
+                    dataset.labels.split(',').some(label => label.trim() === labelFilter);
+                
                 const matchesHealthy = !healthyFilter || dataset.healthyControls === healthyFilter;
 
-                return matchesSearch && matchesModality && matchesOrgan && matchesDisease && matchesHealthy && matchesContrast;
+                return matchesSearch && matchesModality && matchesOrgan && matchesDisease && matchesHealthy && matchesContrast && matchesLabel;
             });
 
             renderDatasets();
