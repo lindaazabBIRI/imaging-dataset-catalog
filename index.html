@@ -46,6 +46,82 @@
             opacity: 0.9;
         }
 
+        .header .updated {
+            font-size: 0.95em;
+            margin-top: 10px;
+            opacity: 0.9;
+        }
+
+        /* ---------- Catalog totals (large header) ---------- */
+        .totals {
+            max-width: 980px;
+            margin: 28px auto 0;
+            background: white;
+            color: #1f2937;
+            border-radius: 16px;
+            padding: 26px 32px 22px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+            text-align: left;
+        }
+
+        .totals-figures {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-end;
+            gap: 16px 48px;
+        }
+
+        .totals-figure.main {
+            margin-right: auto;
+        }
+
+        .totals-number {
+            font-size: 2em;
+            font-weight: 700;
+            line-height: 1.05;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .totals-figure.main .totals-number {
+            font-size: 4em;
+            letter-spacing: -0.02em;
+        }
+
+        .totals-label {
+            font-size: 0.95em;
+            color: #4b5563;
+            margin-top: 6px;
+        }
+
+        .totals-figure.main .totals-label {
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #1f2937;
+        }
+
+        .totals-key {
+            display: inline-block;
+            width: 11px;
+            height: 11px;
+            border-radius: 3px;
+            margin-right: 6px;
+        }
+
+        .totals-key.ready { background: #2563eb; }
+        .totals-key.pending { background: repeating-linear-gradient(135deg, #cbd5e1 0 3px, #e9eef5 3px 6px); }
+
+        .totals .size-bar {
+            height: 12px;
+            margin-top: 20px;
+        }
+
+        .totals-units {
+            font-size: 0.9em;
+            color: #4b5563;
+            margin-top: 12px;
+            line-height: 1.4;
+        }
+
         .filters {
             padding: 30px;
             background: #f8fafc;
@@ -103,6 +179,11 @@
             box-shadow: 0 0 0 3px rgba(79, 172, 254, 0.1);
         }
 
+        .view-toggle button:focus-visible {
+            outline: 3px solid #1d4ed8;
+            outline-offset: 2px;
+        }
+
         .results-header {
             padding: 20px 30px;
             background: white;
@@ -141,7 +222,7 @@
         .dataset-grid {
             padding: 30px;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
             gap: 25px;
             background: #f8fafc;
         }
@@ -153,6 +234,7 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
             border: 2px solid transparent;
+            min-width: 0;
         }
 
         .dataset-card:hover {
@@ -162,7 +244,7 @@
         }
 
         .dataset-header {
-            margin-bottom: 20px;
+            margin-bottom: 18px;
         }
 
         .dataset-name {
@@ -170,12 +252,80 @@
             font-weight: 700;
             color: #1f2937;
             margin-bottom: 8px;
+            overflow-wrap: anywhere;
         }
 
         .dataset-description {
             color: #6b7280;
             line-height: 1.6;
-            margin-bottom: 15px;
+        }
+
+        /* ---------- Sample size panel ---------- */
+        .size-panel {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 16px 18px;
+            margin-bottom: 20px;
+        }
+
+        .size-figures {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 32px;
+            align-items: flex-end;
+        }
+
+        .size-number {
+            font-size: 2em;
+            font-weight: 700;
+            line-height: 1.1;
+            color: #1f2937;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .size-figure.secondary .size-number {
+            font-size: 1.4em;
+            color: #475569;
+        }
+
+        .size-figure.is-zero .size-number {
+            color: #94a3b8;
+        }
+
+        .size-label {
+            font-size: 0.85em;
+            color: #4b5563;
+            margin-top: 2px;
+        }
+
+        .size-bar {
+            display: flex;
+            gap: 2px;
+            height: 10px;
+            margin-top: 14px;
+        }
+
+        .size-bar .seg {
+            height: 100%;
+            min-width: 4px;
+            border-radius: 4px;
+        }
+
+        .size-bar .seg.ready {
+            background: #2563eb;
+        }
+
+        .size-bar .seg.pending {
+            background: repeating-linear-gradient(135deg, #cbd5e1 0 4px, #e9eef5 4px 8px);
+        }
+
+        .size-caption,
+        .size-note {
+            font-size: 0.85em;
+            color: #4b5563;
+            margin-top: 8px;
+            line-height: 1.4;
         }
 
         .dataset-details {
@@ -188,6 +338,7 @@
         .detail-item {
             display: flex;
             flex-direction: column;
+            min-width: 0;
         }
 
         .detail-label {
@@ -202,32 +353,12 @@
         .detail-value {
             font-weight: 500;
             color: #1f2937;
+            overflow-wrap: anywhere;
         }
 
-        .progress-container {
-            grid-column: 1 / -1;
-            margin-top: 10px;
-        }
-
-        .progress-bar {
-            width: 100%;
-            height: 8px;
-            background: #e2e8f0;
-            border-radius: 4px;
-            overflow: hidden;
-            margin-top: 5px;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
-            transition: width 0.3s ease;
-        }
-
-        .progress-text {
-            font-size: 0.9em;
-            color: #6b7280;
-            margin-top: 5px;
+        .not-specified {
+            color: #9ca3af;
+            font-weight: 400;
         }
 
         .tags {
@@ -260,6 +391,7 @@
             text-align: center;
             padding: 60px;
             color: #6b7280;
+            grid-column: 1 / -1;
         }
 
         .no-results h3 {
@@ -302,6 +434,7 @@
             font-size: 0.85em;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            white-space: nowrap;
         }
 
         .datasets-table td {
@@ -313,42 +446,60 @@
             background: #f8fafc;
         }
 
+        .datasets-table th.num,
+        .datasets-table td.num {
+            text-align: right;
+            font-variant-numeric: tabular-nums;
+            white-space: nowrap;
+        }
+
         .table-dataset-name {
             font-weight: 600;
             color: #1f2937;
+            min-width: 200px;
         }
 
-        .table-progress {
-            min-width: 120px;
+        .table-count {
+            font-weight: 700;
+            font-size: 1.05em;
         }
 
-        .table-progress-bar {
-            width: 100%;
-            height: 6px;
-            background: #e2e8f0;
-            border-radius: 3px;
-            overflow: hidden;
-            margin-bottom: 2px;
+        .table-count.is-zero {
+            color: #94a3b8;
+            font-weight: 500;
         }
 
-        .table-progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
-        }
-
-        .table-progress-text {
-            font-size: 0.8em;
+        .table-unit {
+            font-size: 0.85em;
             color: #6b7280;
         }
 
+        .table-size-bar {
+            display: flex;
+            gap: 2px;
+            height: 6px;
+            width: 110px;
+            margin: 6px 0 0 auto;
+        }
+
+        .table-size-bar .seg {
+            height: 100%;
+            min-width: 3px;
+            border-radius: 3px;
+        }
+
+        .table-size-bar .seg.ready { background: #2563eb; }
+        .table-size-bar .seg.pending { background: repeating-linear-gradient(135deg, #cbd5e1 0 3px, #e9eef5 3px 6px); }
+
         .table-tags {
+            min-width: 170px;
             display: flex;
             flex-wrap: wrap;
             gap: 4px;
         }
 
         .table-tags .tag {
-            font-size: 0.7em;
+            font-size: 0.75em;
             padding: 2px 8px;
         }
 
@@ -357,15 +508,53 @@
         }
 
         @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .header {
+                padding: 28px 20px;
+            }
+
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .totals {
+                padding: 20px;
+            }
+
+            .totals-figure.main {
+                flex-basis: 100%;
+            }
+
+            .totals-figure.main .totals-number {
+                font-size: 2.8em;
+            }
+
+            .totals-number {
+                font-size: 1.5em;
+            }
+
+            .filters,
+            .results-header {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
             .filter-grid {
                 grid-template-columns: 1fr;
             }
-            
+
             .dataset-grid {
                 grid-template-columns: 1fr;
                 padding: 20px;
             }
-            
+
+            .dataset-card {
+                padding: 20px;
+            }
+
             .dataset-details {
                 grid-template-columns: 1fr;
             }
@@ -386,6 +575,16 @@
                 font-size: 0.8em;
             }
         }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                transition: none !important;
+            }
+
+            .dataset-card:hover {
+                transform: none;
+            }
+        }
     </style>
 </head>
 <body>
@@ -393,11 +592,15 @@
         <div class="header">
             <h1>BIRI Imaging Dataset Catalog</h1>
             <p>Browse and filter available retrospective datasets for AI analysis</p>
+            <p class="updated" id="catalogUpdated"></p>
+            <div class="totals" id="catalogTotals">
+                <!-- Totals across all projects are calculated from the datasets list -->
+            </div>
         </div>
 
         <div class="filters">
             <input type="text" id="searchInput" class="search-input" placeholder="Search datasets by name, description, or any field...">
-            
+
             <div class="filter-grid">
                 <div class="filter-group">
                     <label for="modalityFilter">Modality</label>
@@ -405,21 +608,21 @@
                         <option value="">All Modalities</option>
                     </select>
                 </div>
-                
+
                 <div class="filter-group">
                     <label for="organFilter">Organ of Interest</label>
                     <select id="organFilter">
                         <option value="">All Organs</option>
                     </select>
                 </div>
-                
+
                 <div class="filter-group">
                     <label for="diseaseFilter">Disease of Interest</label>
                     <select id="diseaseFilter">
                         <option value="">All Diseases</option>
                     </select>
                 </div>
-                
+
                 <div class="filter-group">
                     <label for="healthyFilter">Healthy Controls</label>
                     <select id="healthyFilter">
@@ -428,7 +631,7 @@
                         <option value="No">No</option>
                     </select>
                 </div>
-                
+
                 <div class="filter-group">
                     <label for="contrastFilter">Contrast Status</label>
                     <select id="contrastFilter">
@@ -446,7 +649,7 @@
         </div>
 
         <div class="results-header">
-            <span id="resultsCount">10 datasets found</span>
+            <span id="resultsCount">0 datasets found</span>
             <div class="view-toggle">
                 <button id="cardViewBtn" class="active">Card View</button>
                 <button id="tableViewBtn">Table View</button>
@@ -464,13 +667,14 @@
                         <tr>
                             <th>Project ID</th>
                             <th>Dataset Name</th>
+                            <th class="num">Clean Processed</th>
+                            <th class="num">Pending</th>
                             <th>Modality</th>
                             <th>Organ</th>
                             <th>Disease</th>
                             <th>Contrast</th>
-                            <th>Progress</th>
                             <th>Labels</th>
-                            <th>Status</th>
+                            <th>Tags</th>
                         </tr>
                     </thead>
                     <tbody id="tableBody">
@@ -489,19 +693,32 @@
         document.body.innerHTML = "<h1>Access Denied</h1>";
         throw new Error("Incorrect password");
         }
+
+        // Shown under the page title. Change this whenever the datasets below are updated.
+        const catalogUpdated = "October 9, 2026";
+
+        // HOW THE SAMPLE SIZE AND STATUS FIELDS WORK
+        //   cleanProcessed : number that is clean, processed and ready to use right now
+        //   pending        : number still waiting to be downloaded or processed (0 if none)
+        //   countUnit      : what the numbers count - "Subjects", "Matched pairs", "Scans" or "Studies"
+        //   sizeBreakdown  : optional short line shown under the numbers (e.g. "310 cases + 307 controls")
+        //   countsAsOf     : optional date the counts were last checked, as "YYYY-MM-DD"
         const datasets = [
             {
                 projectId: "6401",
                 name: "PDAC PREDICTION R01",
                 description: "Each case consists of a PDAC patient and healthy control. The PDAC patient has a pre-dx abdominal CT scan 6 months - 10 years prior to PDAC development and some patients may also have a diagnostic scan at PDAC diagnosis (all post-pancreatectomy scans are excluded). The healthy control is matched to each PDAC patient on a 1:1 ratio by age, sex, CT contrast status and year of pre-dx scan",
+                cleanProcessed: 617,
+                pending: 168,
+                countUnit: "Matched pairs",
+                sizeBreakdown: "",
+                countsAsOf: "",
                 modality: "CT",
                 organ: "Abdomen, Pancreas, Liver, Spleen, Gallbladder, Kidneys",
                 disease: "PDAC",
                 healthyControls: "Yes",
                 contrastStatus: "Contrast, Venous, Arterial, Delay, Non-contrast",
                 scanTypes: "Abdominal CT",
-                downloadedCases: 617,
-                goalCases: 1064,
                 labels: "Pancreas, Pancreatic subregions, Tumor",
                 dataFormat: "DICOM, NIfTI",
                 nonImagingData: "Yes",
@@ -509,16 +726,19 @@
             },
             {
                 projectId: "15590",
-                name: "Retro/Pro",
-                description: "Large collection of all abdominal CT scans performed at Cedars over a 10 year period [2/2/2013 – 2/2/2023]. This dataset includes 151 clinical risk factors in addition to the imaging data. We are using this dataset to identify subjects at high risk for PDAC using our PDAC R01 model.",
+                name: "Real World Abdominal CT",
+                description: "Large collection of all abdominal CT scans performed at Cedars over a 10 year period [2/2/2013 – 2/2/2023]. This dataset includes 151+ clinical risk factors in addition to the imaging data. We are using this dataset to identify subjects at high risk for PDAC using our PDAC R01 model.",
+                cleanProcessed: 63400,
+                pending: 0,
+                countUnit: "Scans",
+                sizeBreakdown: "",
+                countsAsOf: "",
                 modality: "CT",
                 organ: "Abdomen, Pancreas, Liver, Spleen, Gallbladder, Kidneys",
                 disease: "PDAC",
                 healthyControls: "No",
                 contrastStatus: "Contrast, Venous, Arterial, Delay, Non-contrast",
                 scanTypes: "Abdominal CT",
-                downloadedCases: 5000,
-                goalCases: 63400,
                 labels: "No segmentations yet",
                 dataFormat: "DICOM",
                 nonImagingData: "Yes",
@@ -527,15 +747,18 @@
             {
                 projectId: "13906",
                 name: "PDAC Dx Survival Outcome",
-                description: "This dataset includes 51 PDAC positive patients along with their survival outcome (+/- 2 years from Dx date). Some patients have CT or MRI or both. 44/51 survived 2+ years and 7 survived less tgan 2 years, 38 have CT, 7 MRI and 10 have both.Please note this data is identified, but not yet downloaded.",
+                description: "This dataset includes 51 PDAC positive patients along with their survival outcome (+/- 2 years from Dx date). Some patients have CT or MRI or both. 44/51 survived 2+ years and 7 survived less tgan 2 years, 38 have CT, 7 MRI and 10 have both.",
+                cleanProcessed: 51,
+                pending: 0,
+                countUnit: "Subjects",
+                sizeBreakdown: "",
+                countsAsOf: "",
                 modality: "CT",
                 organ: "Abdomen, Pancreas, Liver, Spleen, Gallbladder, Kidneys",
                 disease: "PDAC",
                 healthyControls: "No",
                 contrastStatus: "Contrast, Venous, Arterial, Delay, Non-contrast",
                 scanTypes: "Abdominal CT, Abdominal MRI",
-                downloadedCases: 51,
-                goalCases: 100,
                 labels: "No segmentations yet",
                 dataFormat: "DICOM",
                 nonImagingData: "Yes",
@@ -544,15 +767,18 @@
             {
                 projectId: "11506",
                 name: "Predicting PDAC from Pre-diagnostic Retinal Scans",
-                description: "We have pre-dianstic PDAC retinal scans who have type 2 diabetes at the time of pre-dx scan. The PDAC patient has a pre-dx diabetic retinal scan 6 months - 10 years prior to PDAC development. The control is matched to each PDAC patient on a 1:1 ratio by age, sex and year of pre-dx scan with diabetes but no PDAC",
+                description: "We have pre-diagnstic PDAC retinal scans who have type 2 diabetes at the time of pre-dx scan. The PDAC patient has a pre-dx diabetic retinal scan 6 months - 10 years prior to PDAC development. The control is matched to each PDAC patient on a 1:1 ratio by age, sex and year of pre-dx scan with diabetes but no PDAC",
+                cleanProcessed: 68,
+                pending: 0,
+                countUnit: "Matched pairs",
+                sizeBreakdown: "",
+                countsAsOf: "",
                 modality: "Retinal Scan",
                 organ: "Iris, Eye",
                 disease: "PDAC, Diabetes",
                 healthyControls: "Yes",
                 contrastStatus: "NA",
                 scanTypes: "Abdominal CT",
-                downloadedCases: 68,
-                goalCases: 200,
                 labels: "No segmentations yet",
                 dataFormat: "JPEG",
                 nonImagingData: "No",
@@ -562,14 +788,17 @@
                 projectId: "14149",
                 name: "Breast Mammography for CAD Prediction",
                 description: "This dataset includes Coronary Artery Disease (CAD) patients who have a breast mammograhy 6 months - 10 years prior to CAD diagnsosis. This dataset is used to predict CVD using breast mmammography.Each case includes a CAD patient pre-dx mammogram and an age, gender-matched helathy control with a mammogram performed the same year as matching patient's pre-dx",
+                cleanProcessed: 126,
+                pending: 0,
+                countUnit: "Matched pairs",
+                sizeBreakdown: "",
+                countsAsOf: "",
                 modality: "Mammography",
                 organ: "Breast, Heart",
                 disease: "Coronary Artery Disease",
                 healthyControls: "Yes",
                 contrastStatus: "Non-contrast",
                 scanTypes: "Breast Mammography",
-                downloadedCases: 126,
-                goalCases: 500,
                 labels: "No segmentations yet",
                 dataFormat: "DICOM",
                 nonImagingData: "Yes",
@@ -579,14 +808,17 @@
                 projectId: "11075",
                 name: "Breast Imaging Treatment Response Prediction",
                 description: "This dataset includes breast cancer pateints who have an MRI at time of diagnosis (before chemotherapy/treatment) and have a pathology stating the treatment resposne status. Some patients also have an MRI post-treatment right before surgery. We have a total of 119 cases; 73 with baseline MRI only + 46 with both baseline and pre-surgery MRI.",
+                cleanProcessed: 73,
+                pending: 0,
+                countUnit: "Subjects",
+                sizeBreakdown: "",
+                countsAsOf: "",
                 modality: "MRI",
                 organ: "Breast",
                 disease: "Breast Cancer",
                 healthyControls: "No",
-                contrastStatus: "Contrast, Venous, Arterial, Delay ",
+                contrastStatus: "Contrast, Venous, Arterial, Delay",
                 scanTypes: "Breast MRI",
-                downloadedCases: 73,
-                goalCases: 200,
                 labels: "No segmentations yet",
                 dataFormat: "DICOM",
                 nonImagingData: "Yes",
@@ -596,14 +828,17 @@
                 projectId: "15112",
                 name: "Metformin Organ Aging",
                 description: "This dataset consists of patients who were taking Metformin medication and have abdominal CT scans at multiple time points over teh duration of medication intake. These images are used to predict organ aging effects of Metformin on the subject population.",
+                cleanProcessed: 33,
+                pending: 0,
+                countUnit: "Subjects",
+                sizeBreakdown: "",
+                countsAsOf: "",
                 modality: "CT",
                 organ: "Abdomen, Pancreas, Liver, Spleen, Gallbladder, Kidneys",
                 disease: "Aging",
                 healthyControls: "Yes",
                 contrastStatus: "Contrast, Venous, Delay, Arterial, Non-contrast",
                 scanTypes: "Abdominal CT",
-                downloadedCases: 33,
-                goalCases: 500,
                 labels: "No segmentations yet",
                 dataFormat: "DICOM",
                 nonImagingData: "Yes",
@@ -613,14 +848,17 @@
                 projectId: "13600",
                 name: "Breast Cancer Prediction from Abdominal CT",
                 description: "This dataset consists of Breast Cancer patients who had an abdominal CT scan 6 months - 10 years prior to Breast cancer. We are using the abdominal CT scan to detect the biological age of abdominal organs and find correlation to breast cancer risk, if exists.",
+                cleanProcessed: 61,
+                pending: 0,
+                countUnit: "Subjects",
+                sizeBreakdown: "",
+                countsAsOf: "",
                 modality: "CT",
                 organ: "Abdomen, Pancreas, Liver, Spleen, Gallbladder, Kidneys",
                 disease: "Aging, Breast Cancer",
                 healthyControls: "Yes",
                 contrastStatus: "Contrast, Venous, Delay, Arterial, Non-contrast",
                 scanTypes: "Abdominal CT",
-                downloadedCases: 61,
-                goalCases: 500,
                 labels: "Pancreas, Pancreatic subregions",
                 dataFormat: "DICOM, NIFTI",
                 nonImagingData: "Yes",
@@ -630,14 +868,17 @@
                 projectId: "13600",
                 name: "Chronic Pancreatitis Prediction from Abdominal CT",
                 description: "This dataset consists of Chronic Pancreatitis (CP) patients who had an abdominal CT scan 6 months - 10 years prior to CP, some patients also have Dx scans. We are using the abdominal CT scan to detect the biological age of abdominal organs and find correlation to CP risk, if exists.",
+                cleanProcessed: 57,
+                pending: 0,
+                countUnit: "Subjects",
+                sizeBreakdown: "",
+                countsAsOf: "",
                 modality: "CT",
                 organ: "Abdomen, Pancreas, Liver, Spleen, Gallbladder, Kidneys",
                 disease: "Aging, Chronic Pancreatitis",
                 healthyControls: "Yes",
                 contrastStatus: "Contrast, Venous, Delay, Arterial, Non-contrast",
                 scanTypes: "Abdominal CT",
-                downloadedCases: 57,
-                goalCases: 500,
                 labels: "Pancreas, Pancreatic subregions",
                 dataFormat: "DICOM, NIFTI",
                 nonImagingData: "Yes",
@@ -647,14 +888,17 @@
                 projectId: "13600",
                 name: "Cirrhosis Prediction from Abdominal CT",
                 description: "This dataset consists of Cirrhosis patients who had an abdominal CT scan 6 months - 10 years prior to Cirrhosis, some patients also have Dx scans. We are using the abdominal CT scan to detect the biological age of abdominal organs and find correlation to Cirrhossis risk, if exists.",
+                cleanProcessed: 68,
+                pending: 0,
+                countUnit: "Subjects",
+                sizeBreakdown: "",
+                countsAsOf: "",
                 modality: "CT",
                 organ: "Abdomen, Pancreas, Liver, Spleen, Gallbladder, Kidneys",
                 disease: "Aging, Cirrhosis",
                 healthyControls: "Yes",
                 contrastStatus: "Contrast, Venous, Delay, Arterial, Non-contrast",
                 scanTypes: "Abdominal CT",
-                downloadedCases: 68,
-                goalCases: 500,
                 labels: "Pancreas, Pancreatic subregions",
                 dataFormat: "DICOM, NIFTI",
                 nonImagingData: "Yes",
@@ -664,14 +908,17 @@
                 projectId: "13600",
                 name: "Stroke Prediction from Abdominal CT",
                 description: "This dataset consists of Stroke patients who had an abdominal CT scan 6 months - 10 years prior to Stroke. We are using the abdominal CT scan to detect the biological age of abdominal organs and find correlation to Stroke risk, if exists.",
+                cleanProcessed: 141,
+                pending: 0,
+                countUnit: "Subjects",
+                sizeBreakdown: "",
+                countsAsOf: "",
                 modality: "CT",
                 organ: "Abdomen, Pancreas, Liver, Spleen, Gallbladder, Kidneys",
                 disease: "Aging, Stroke",
                 healthyControls: "Yes",
                 contrastStatus: "Contrast, Venous, Delay, Arterial, Non-contrast",
                 scanTypes: "Abdominal CT",
-                downloadedCases: 141,
-                goalCases: 500,
                 labels: "Pancreas, Pancreatic subregions",
                 dataFormat: "DICOM, NIFTI",
                 nonImagingData: "Yes",
@@ -679,18 +926,161 @@
             },
             {
                 projectId: "13600",
-                name: "Healthy Controls - Abdominal CT",
+                name: "Healthy Controls - Abdominal CT [Aging Controls]",
                 description: "This dataset consists of Healthy Controls identified by healthy BMI and excluding most common risk factors (inquire for details of eligibility). This dataset contains abdominal CT scans of subjects age 50 - 80 years old.",
+                cleanProcessed: 663,
+                pending: 0,
+                countUnit: "Scans",
+                sizeBreakdown: "",
+                countsAsOf: "",
                 modality: "CT",
                 organ: "Abdomen, Pancreas, Liver, Spleen, Gallbladder, Kidneys",
                 disease: "Aging, Healthy",
                 healthyControls: "Yes",
                 contrastStatus: "Contrast, Venous, Delay, Arterial, Non-contrast",
                 scanTypes: "Abdominal CT",
-                downloadedCases: 663,
-                goalCases: 1000,
                 labels: "Pancreas, Pancreatic subregions",
                 dataFormat: "DICOM, NIFTI",
+                nonImagingData: "Yes",
+                usageRestrictions: "IRB Approved - Restricted Access"
+            },
+            {
+                projectId: "BIRI-01",
+                name: "Real World LDCT",
+                description: "Low-dose CT / lung screening data. 2,495 subjects with a total of 4963 scans. 20 subjects have PDAC dx. We have 200+ associated clinical factors in this dataset.",
+                cleanProcessed: 4963,
+                pending: 0,
+                countUnit: "Scans",
+                sizeBreakdown: "",
+                countsAsOf: "",
+                modality: "LDCT",
+                organ: "",
+                disease: "",
+                healthyControls: "No",
+                contrastStatus: "",
+                scanTypes: "Low Dose CT",
+                labels: "",
+                dataFormat: "DICOM, NIfTI",
+                nonImagingData: "Yes",
+                usageRestrictions: "IRB Approved - Restricted Access"
+            },
+            {
+                projectId: "BIRI-02",
+                name: "PDAC small tumor detection",
+                description: "This dataset consists of PDAC Dx scans with segmented tumors and radiology re-reading reports. Data contains all tumor sizes",
+                cleanProcessed: 300,
+                pending: 350,
+                countUnit: "Scans",
+                sizeBreakdown: "",
+                countsAsOf: "",
+                modality: "CT",
+                organ: "Abdomen, Pancreas, Liver, Spleen, Gallbladder, Kidneys",
+                disease: "PDAC",
+                healthyControls: "Yes",
+                contrastStatus: "",
+                scanTypes: "Abdominal CT",
+                labels: "PDAC Tumor",
+                dataFormat: "DICOM, NIfTI",
+                nonImagingData: "Yes",
+                usageRestrictions: "IRB Approved - Restricted Access"
+            },
+            {
+                projectId: "BIRI-03",
+                name: "Real World TNBC Breast Cancer",
+                description: "Real World Cedars TNBC breast cancer subjects along with MRI, chemo, pathology, pCR/RCB; Huntington cohort avaialbe as well (clinical data only)",
+                cleanProcessed: 147,
+                pending: 0,
+                countUnit: "Subjects",
+                sizeBreakdown: "",
+                countsAsOf: "",
+                modality: "MRI",
+                organ: "Breast, Heart",
+                disease: "TNBC",
+                healthyControls: "No",
+                contrastStatus: "",
+                scanTypes: "Breast MRI",
+                labels: "",
+                dataFormat: "DICOM, NIfTI",
+                nonImagingData: "Yes",
+                usageRestrictions: "IRB Approved - Restricted Access"
+            },
+            {
+                projectId: "BIRI-04",
+                name: "Real World Breast MRI",
+                description: "All CSMC Breast MRI data from 2012-2025 along with 200+ associated clinical data. 17,207 subjects with 34615 MRI scans.",
+                cleanProcessed: 34615,
+                pending: 0,
+                countUnit: "Scans",
+                sizeBreakdown: "",
+                countsAsOf: "",
+                modality: "MRI",
+                organ: "Breast, Heart",
+                disease: "",
+                healthyControls: "No",
+                contrastStatus: "",
+                scanTypes: "Breast MRI",
+                labels: "",
+                dataFormat: "DICOM, NIfTI",
+                nonImagingData: "Yes",
+                usageRestrictions: "IRB Approved - Restricted Access"
+            },
+            {
+                projectId: "BIRI-05",
+                name: "Real World Breast Mammography",
+                description: "All CSMC Breast MRI data from 2012-2025 along with 200+ associated clinical data. 140,900 Mammograms. Clinical data received, images not yet downloaded.",
+                cleanProcessed: 0,
+                pending: 140900,
+                countUnit: "Scans",
+                sizeBreakdown: "",
+                countsAsOf: "",
+                modality: "Mammography",
+                organ: "Breast",
+                disease: "",
+                healthyControls: "No",
+                contrastStatus: "",
+                scanTypes: "Breast Mammography",
+                labels: "",
+                dataFormat: "",
+                nonImagingData: "Yes",
+                usageRestrictions: "IRB Approved - Restricted Access"
+            },
+            {
+                projectId: "BIRI-06",
+                name: "Real World Brain Data",
+                description: "All CSMC Brain MRI scans from 2012-2025. Data contains 103,574 patients with 187,731 scans along with 200+ associated clinical factors.Clinical data received, images not yet downloaded.",
+                cleanProcessed: 0,
+                pending: 187731,
+                countUnit: "Scans",
+                sizeBreakdown: "",
+                countsAsOf: "",
+                modality: "MRI",
+                organ: "Brain",
+                disease: "",
+                healthyControls: "No",
+                contrastStatus: "",
+                scanTypes: "Brain MRI",
+                labels: "",
+                dataFormat: "",
+                nonImagingData: "Yes",
+                usageRestrictions: "IRB Approved - Restricted Access"
+            },
+            {
+                projectId: "BIRI-07",
+                name: "Real World Abdominal CT - Huntington",
+                description: "All HH abdominal CT scans from 2022-2025. 8,952 subjects with 10,969 scans along with 151+ associated clinical factors",
+                cleanProcessed: 10969,
+                pending: 0,
+                countUnit: "Scans",
+                sizeBreakdown: "",
+                countsAsOf: "",
+                modality: "CT",
+                organ: "Abdomen, Pancreas, Liver, Spleen, Gallbladder, Kidneys",
+                disease: "PDAC",
+                healthyControls: "No",
+                contrastStatus: "",
+                scanTypes: "Abdominal CT",
+                labels: "",
+                dataFormat: "DICOM, NIfTI",
                 nonImagingData: "Yes",
                 usageRestrictions: "IRB Approved - Restricted Access"
             }
@@ -699,41 +1089,81 @@
         let filteredDatasets = [...datasets];
         let currentView = 'card';
 
+        // ---------- Helpers ----------
+        function escapeHtml(value) {
+            return String(value == null ? '' : value)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;');
+        }
+
+        // Shows the value, or a grey "Not specified" when the field was left blank
+        function show(value) {
+            const text = String(value == null ? '' : value).trim();
+            return text ? escapeHtml(text) : '<span class="not-specified">Not specified</span>';
+        }
+
+        // Table version: a dash keeps blank cells quiet
+        function showCell(value) {
+            const text = String(value == null ? '' : value).trim();
+            return text ? escapeHtml(text) : '<span class="not-specified" title="Not specified">&ndash;</span>';
+        }
+
+        function formatNumber(n) {
+            return Number(n || 0).toLocaleString('en-US');
+        }
+
+        function splitValues(value) {
+            return String(value == null ? '' : value).split(',').map(v => v.trim()).filter(Boolean);
+        }
+
+        function getCounts(dataset) {
+            const ready = Math.max(0, Number(dataset.cleanProcessed) || 0);
+            const pending = Math.max(0, Number(dataset.pending) || 0);
+            return { ready, pending, total: ready + pending };
+        }
+
+        function getUnit(dataset) {
+            return (String(dataset.countUnit || '').trim() || 'cases').toLowerCase();
+        }
+
+        function formatDate(iso) {
+            const parts = String(iso || '').split('-').map(Number);
+            if (parts.length !== 3 || parts.some(isNaN)) return '';
+            return new Date(parts[0], parts[1] - 1, parts[2]).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+        }
+
         // Initialize the application
         function init() {
+            document.getElementById('catalogUpdated').textContent = catalogUpdated ? `Last updated ${catalogUpdated}` : '';
             populateFilterOptions();
+            renderTotals();
             renderDatasets();
             setupEventListeners();
         }
 
-        // Enhanced filter population to handle comma-separated values
+        // Enhanced filter population to handle comma-separated values (blank values are skipped)
         function populateFilterOptions() {
-            const modalities = [...new Set(datasets.map(d => d.modality))];
-            
-            // Handle comma-separated values for organs, diseases, contrast status, and labels
+            const modalitySet = new Set();
             const organSet = new Set();
             const diseaseSet = new Set();
             const contrastSet = new Set();
             const labelSet = new Set();
-            
+
             datasets.forEach(dataset => {
-                // Split comma-separated values and trim whitespace
-                dataset.organ.split(',').forEach(organ => organSet.add(organ.trim()));
-                dataset.disease.split(',').forEach(disease => diseaseSet.add(disease.trim()));
-                dataset.contrastStatus.split(',').forEach(contrast => contrastSet.add(contrast.trim()));
-                dataset.labels.split(',').forEach(label => labelSet.add(label.trim()));
+                splitValues(dataset.modality).forEach(v => modalitySet.add(v));
+                splitValues(dataset.organ).forEach(v => organSet.add(v));
+                splitValues(dataset.disease).forEach(v => diseaseSet.add(v));
+                splitValues(dataset.contrastStatus).forEach(v => contrastSet.add(v));
+                splitValues(dataset.labels).forEach(v => labelSet.add(v));
             });
 
-            const organs = [...organSet].sort();
-            const diseases = [...diseaseSet].sort();
-            const contrastStatuses = [...contrastSet].sort();
-            const labels = [...labelSet].sort();
-
-            populateSelect('modalityFilter', modalities);
-            populateSelect('organFilter', organs);
-            populateSelect('diseaseFilter', diseases);
-            populateSelect('contrastFilter', contrastStatuses);
-            populateSelect('labelFilter', labels);
+            populateSelect('modalityFilter', [...modalitySet].sort());
+            populateSelect('organFilter', [...organSet].sort());
+            populateSelect('diseaseFilter', [...diseaseSet].sort());
+            populateSelect('contrastFilter', [...contrastSet].sort());
+            populateSelect('labelFilter', [...labelSet].sort());
         }
 
         function populateSelect(selectId, options) {
@@ -746,6 +1176,53 @@
             });
         }
 
+        // Large header: adds up clean processed + pending across every project in the list
+        function renderTotals() {
+            let ready = 0;
+            let pending = 0;
+            const byUnit = {};
+
+            datasets.forEach(dataset => {
+                const counts = getCounts(dataset);
+                const unit = getUnit(dataset);
+                ready += counts.ready;
+                pending += counts.pending;
+                byUnit[unit] = (byUnit[unit] || 0) + counts.total;
+            });
+
+            const total = ready + pending;
+            const unitParts = Object.entries(byUnit)
+                .filter(([, n]) => n > 0)
+                .sort((a, b) => b[1] - a[1])
+                .map(([unit, n]) => `${formatNumber(n)} ${escapeHtml(unit)}`);
+            const unitText = unitParts.length > 1
+                ? `${unitParts.slice(0, -1).join(', ')} and ${unitParts[unitParts.length - 1]}`
+                : unitParts.join('');
+
+            document.getElementById('catalogTotals').innerHTML = `
+                <div class="totals-figures">
+                    <div class="totals-figure main">
+                        <div class="totals-number">${formatNumber(total)}</div>
+                        <div class="totals-label">Total sample size across ${datasets.length} projects</div>
+                    </div>
+                    <div class="totals-figure">
+                        <div class="totals-number">${formatNumber(ready)}</div>
+                        <div class="totals-label"><span class="totals-key ready"></span>Clean processed</div>
+                    </div>
+                    <div class="totals-figure">
+                        <div class="totals-number">${formatNumber(pending)}</div>
+                        <div class="totals-label"><span class="totals-key pending"></span>Pending</div>
+                    </div>
+                </div>
+                ${total > 0 ? `
+                <div class="size-bar" role="img" aria-label="${formatNumber(ready)} clean processed and ${formatNumber(pending)} pending, out of ${formatNumber(total)}">
+                    ${ready > 0 ? `<span class="seg ready" style="flex: ${ready} 1 0"></span>` : ''}
+                    ${pending > 0 ? `<span class="seg pending" style="flex: ${pending} 1 0"></span>` : ''}
+                </div>` : ''}
+                ${unitText ? `<div class="totals-units">Counted as ${unitText}, added together.</div>` : ''}
+            `;
+        }
+
         // Setup event listeners
         function setupEventListeners() {
             document.getElementById('searchInput').addEventListener('input', filterDatasets);
@@ -755,7 +1232,7 @@
             document.getElementById('healthyFilter').addEventListener('change', filterDatasets);
             document.getElementById('contrastFilter').addEventListener('change', filterDatasets);
             document.getElementById('labelFilter').addEventListener('change', filterDatasets);
-            
+
             // View toggle buttons
             document.getElementById('cardViewBtn').addEventListener('click', () => toggleView('card'));
             document.getElementById('tableViewBtn').addEventListener('click', () => toggleView('table'));
@@ -780,13 +1257,13 @@
                 datasetGrid.classList.add('hidden');
                 tableView.classList.remove('hidden');
             }
-            
+
             renderDatasets();
         }
 
         // Enhanced filter function with comma-separated value support
         function filterDatasets() {
-            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
             const modalityFilter = document.getElementById('modalityFilter').value;
             const organFilter = document.getElementById('organFilter').value;
             const diseaseFilter = document.getElementById('diseaseFilter').value;
@@ -795,26 +1272,16 @@
             const labelFilter = document.getElementById('labelFilter').value;
 
             filteredDatasets = datasets.filter(dataset => {
-                const matchesSearch = !searchTerm || 
-                    Object.values(dataset).some(value => 
-                        value.toString().toLowerCase().includes(searchTerm)
+                const matchesSearch = !searchTerm ||
+                    Object.values(dataset).some(value =>
+                        String(value == null ? '' : value).toLowerCase().includes(searchTerm)
                     );
 
-                const matchesModality = !modalityFilter || dataset.modality === modalityFilter;
-                
-                // Enhanced filtering for comma-separated values
-                const matchesOrgan = !organFilter || 
-                    dataset.organ.split(',').some(organ => organ.trim() === organFilter);
-                
-                const matchesDisease = !diseaseFilter || 
-                    dataset.disease.split(',').some(disease => disease.trim() === diseaseFilter);
-                
-                const matchesContrast = !contrastFilter || 
-                    dataset.contrastStatus.split(',').some(contrast => contrast.trim() === contrastFilter);
-                
-                const matchesLabel = !labelFilter || 
-                    dataset.labels.split(',').some(label => label.trim() === labelFilter);
-                
+                const matchesModality = !modalityFilter || splitValues(dataset.modality).includes(modalityFilter);
+                const matchesOrgan = !organFilter || splitValues(dataset.organ).includes(organFilter);
+                const matchesDisease = !diseaseFilter || splitValues(dataset.disease).includes(diseaseFilter);
+                const matchesContrast = !contrastFilter || splitValues(dataset.contrastStatus).includes(contrastFilter);
+                const matchesLabel = !labelFilter || splitValues(dataset.labels).includes(labelFilter);
                 const matchesHealthy = !healthyFilter || dataset.healthyControls === healthyFilter;
 
                 return matchesSearch && matchesModality && matchesOrgan && matchesDisease && matchesHealthy && matchesContrast && matchesLabel;
@@ -859,7 +1326,7 @@
             if (filteredDatasets.length === 0) {
                 tableBody.innerHTML = `
                     <tr>
-                        <td colspan="9" style="text-align: center; padding: 40px; color: #6b7280;">
+                        <td colspan="10" style="text-align: center; padding: 40px; color: #6b7280;">
                             <h3>No datasets found</h3>
                             <p>Try adjusting your filters or search terms</p>
                         </td>
@@ -871,71 +1338,110 @@
             tableBody.innerHTML = filteredDatasets.map(dataset => createTableRow(dataset)).join('');
         }
 
+        // Sample size panel: clean processed vs pending, with a bar when some data is still pending
+        function createSizePanel(dataset) {
+            const { ready, pending, total } = getCounts(dataset);
+            const unit = escapeHtml(getUnit(dataset));
+            const percent = total > 0 ? Math.round((ready / total) * 100) : 0;
+            const asOf = formatDate(dataset.countsAsOf);
+
+            let figures = `
+                <div class="size-figure ${ready === 0 ? 'is-zero' : ''}">
+                    <div class="size-number">${formatNumber(ready)}</div>
+                    <div class="size-label">${unit} clean processed</div>
+                </div>
+            `;
+            let bar = '';
+
+            if (pending > 0) {
+                figures += `
+                    <div class="size-figure secondary">
+                        <div class="size-number">${formatNumber(pending)}</div>
+                        <div class="size-label">${unit} pending</div>
+                    </div>
+                `;
+                bar = `
+                    <div class="size-bar" role="img" aria-label="${formatNumber(ready)} ${unit} clean processed and ${formatNumber(pending)} pending, out of ${formatNumber(total)}">
+                        ${ready > 0 ? `<span class="seg ready" style="flex: ${ready} 1 0"></span>` : ''}
+                        <span class="seg pending" style="flex: ${pending} 1 0"></span>
+                    </div>
+                    ${ready > 0 ? `<div class="size-caption">${percent}% of ${formatNumber(total)} ${unit} clean processed so far</div>` : ''}
+                `;
+            }
+
+            const notes = [dataset.sizeBreakdown, asOf ? `Counts as of ${asOf}` : '']
+                .map(n => String(n == null ? '' : n).trim())
+                .filter(Boolean)
+                .map(n => `<div class="size-note">${escapeHtml(n)}</div>`)
+                .join('');
+
+            return `<div class="size-panel"><div class="size-figures">${figures}</div>${bar}${notes}</div>`;
+        }
+
+        function createTags(dataset) {
+            const restrictions = String(dataset.usageRestrictions || '').trim();
+            return `
+                ${dataset.healthyControls === 'Yes' ? '<span class="tag healthy">Healthy Controls</span>' : ''}
+                ${dataset.nonImagingData === 'Yes' ? '<span class="tag">Non-imaging Data</span>' : ''}
+                ${restrictions ? `<span class="tag ${restrictions.includes('Restricted') ? 'restricted' : ''}">${escapeHtml(restrictions)}</span>` : ''}
+            `;
+        }
+
         // Create dataset card HTML
         function createDatasetCard(dataset) {
-            const progressPercentage = Math.round((dataset.downloadedCases / dataset.goalCases) * 100);
-            
             return `
                 <div class="dataset-card">
                     <div class="dataset-header">
-                        <div class="dataset-name">${dataset.name}</div>
-                        <div class="dataset-description">${dataset.description}</div>
+                        <div class="dataset-name">${escapeHtml(dataset.name)}</div>
+                        <div class="dataset-description">${escapeHtml(dataset.description)}</div>
                     </div>
-                    
+
+                    ${createSizePanel(dataset)}
+
                     <div class="dataset-details">
                         <div class="detail-item">
                             <div class="detail-label">Project ID</div>
-                            <div class="detail-value">${dataset.projectId}</div>
+                            <div class="detail-value">${show(dataset.projectId)}</div>
                         </div>
-                        
+
                         <div class="detail-item">
                             <div class="detail-label">Modality</div>
-                            <div class="detail-value">${dataset.modality}</div>
+                            <div class="detail-value">${show(dataset.modality)}</div>
                         </div>
-                        
+
                         <div class="detail-item">
                             <div class="detail-label">Organ</div>
-                            <div class="detail-value">${dataset.organ}</div>
+                            <div class="detail-value">${show(dataset.organ)}</div>
                         </div>
-                        
+
                         <div class="detail-item">
                             <div class="detail-label">Disease</div>
-                            <div class="detail-value">${dataset.disease}</div>
+                            <div class="detail-value">${show(dataset.disease)}</div>
                         </div>
-                        
+
                         <div class="detail-item">
                             <div class="detail-label">Contrast Status</div>
-                            <div class="detail-value">${dataset.contrastStatus}</div>
+                            <div class="detail-value">${show(dataset.contrastStatus)}</div>
                         </div>
-                        
+
                         <div class="detail-item">
                             <div class="detail-label">Scan Types</div>
-                            <div class="detail-value">${dataset.scanTypes}</div>
+                            <div class="detail-value">${show(dataset.scanTypes)}</div>
                         </div>
-                        
+
                         <div class="detail-item">
                             <div class="detail-label">Labels Available</div>
-                            <div class="detail-value">${dataset.labels}</div>
+                            <div class="detail-value">${show(dataset.labels)}</div>
                         </div>
-                        
+
                         <div class="detail-item">
                             <div class="detail-label">Data Format</div>
-                            <div class="detail-value">${dataset.dataFormat}</div>
-                        </div>
-                        
-                        <div class="progress-container">
-                            <div class="detail-label">Progress</div>
-                            <div class="progress-bar">
-                                <div class="progress-fill" style="width: ${progressPercentage}%"></div>
-                            </div>
-                            <div class="progress-text">${dataset.downloadedCases} / ${dataset.goalCases} cases (${progressPercentage}%)</div>
+                            <div class="detail-value">${show(dataset.dataFormat)}</div>
                         </div>
                     </div>
-                    
+
                     <div class="tags">
-                        ${dataset.healthyControls === 'Yes' ? '<span class="tag healthy">Healthy Controls</span>' : ''}
-                        ${dataset.nonImagingData === 'Yes' ? '<span class="tag">Non-imaging Data</span>' : ''}
-                        <span class="tag ${dataset.usageRestrictions.includes('Restricted') ? 'restricted' : ''}">${dataset.usageRestrictions}</span>
+                        ${createTags(dataset)}
                     </div>
                 </div>
             `;
@@ -943,28 +1449,35 @@
 
         // Create table row HTML
         function createTableRow(dataset) {
-            const progressPercentage = Math.round((dataset.downloadedCases / dataset.goalCases) * 100);
-            
+            const { ready, pending } = getCounts(dataset);
+            const unit = escapeHtml(getUnit(dataset));
+
             return `
                 <tr>
-                    <td class="table-dataset-name">${dataset.projectId}</td>
-                    <td class="table-dataset-name">${dataset.name}</td>
-                    <td>${dataset.modality}</td>
-                    <td>${dataset.organ}</td>
-                    <td>${dataset.disease}</td>
-                    <td>${dataset.contrastStatus}</td>
-                    <td class="table-progress">
-                        <div class="table-progress-bar">
-                            <div class="table-progress-fill" style="width: ${progressPercentage}%"></div>
-                        </div>
-                        <div class="table-progress-text">${dataset.downloadedCases}/${dataset.goalCases} (${progressPercentage}%)</div>
+                    <td class="table-dataset-name" style="min-width: 0">${showCell(dataset.projectId)}</td>
+                    <td class="table-dataset-name">${escapeHtml(dataset.name)}</td>
+                    <td class="num">
+                        <div class="table-count ${ready === 0 ? 'is-zero' : ''}">${formatNumber(ready)}</div>
+                        <div class="table-unit">${unit}</div>
+                        ${pending > 0 ? `
+                            <div class="table-size-bar" role="img" aria-label="${formatNumber(ready)} clean processed, ${formatNumber(pending)} pending">
+                                ${ready > 0 ? `<span class="seg ready" style="flex: ${ready} 1 0"></span>` : ''}
+                                <span class="seg pending" style="flex: ${pending} 1 0"></span>
+                            </div>` : ''}
                     </td>
-                    <td>${dataset.labels}</td>
+                    <td class="num">
+                        ${pending > 0
+                            ? `<div class="table-count">${formatNumber(pending)}</div><div class="table-unit">${unit}</div>`
+                            : '<span class="not-specified" title="None pending">&ndash;</span>'}
+                    </td>
+                    <td>${showCell(dataset.modality)}</td>
+                    <td>${showCell(dataset.organ)}</td>
+                    <td>${showCell(dataset.disease)}</td>
+                    <td>${showCell(dataset.contrastStatus)}</td>
+                    <td>${showCell(dataset.labels)}</td>
                     <td>
                         <div class="table-tags">
-                            ${dataset.healthyControls === 'Yes' ? '<span class="tag healthy">Healthy Controls</span>' : ''}
-                            ${dataset.nonImagingData === 'Yes' ? '<span class="tag">Non-imaging Data</span>' : ''}
-                            <span class="tag ${dataset.usageRestrictions.includes('Restricted') ? 'restricted' : ''}">${dataset.usageRestrictions}</span>
+                            ${createTags(dataset)}
                         </div>
                     </td>
                 </tr>
